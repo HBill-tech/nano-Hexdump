@@ -1,66 +1,53 @@
-# Reimplementing hexdump
+# 复现hexdump
 
-Engliss | [中文](README.zh.md)
+[English](README.md) | 中文
 
-`hexdump` is a commonly used command-line tool in Linux/Unix systems for viewing file contents in hexadecimal. It is very useful for analyzing binary files, checking data formats, debugging programs, and other scenarios.
+hexdump 是一个在 Linux/Unix 系统中常用的命令行工具，用于以十六进制形式查看文件内容. 它对于分析二进制文件、检查数据格式、调试程序等场景非常有用.
 
-## Usage
+## 使用说明
 
-### Download
+### 下载
 
 ```bash
 git clone https://gitcode.com/huanghaoqi/hexdump.git
 cd hexdump
 ```
 
-### Compile
+### 编译
 
 ```bash
 gcc hexdump.c -o hexdump
-```
+``` 
 
-### Run
-
-#### Pipe string contents as input
-
-1. Without command-line arguments
-
+### 运行
+#### 将字符串通过管道输入
+1.无命令行参数
 ```bash
 echo "hello world! have a good day" | ./hexdump 
 ```
-
-Output:
-
+输出为
 ```bash
 00000000 6865 6c6c 6f20 776f 726c 6421 2068 6176 
 00000010 6520 6120 676f 6f64 2064 6179 
 0000001d
 ```
-
-2. With the `-C` option (case-insensitive)
-
+2.有 -C 参数 (不区分大小写)
 ```bash
 echo "hello world! have a good day" | ./hexdump -C
 ```
-
-Output:
-
-```text
+输出为
+```
 00000000 68 65 6c 6c 6f 20 77 6f  72 6c 64 21 20 68 61 76  |hello world! hav|
 00000010 65 20 61 20 67 6f 6f 64  20 64 61 79 0a           |e a good day.|
 0000001d
 ```
 
-#### Pipe file contents as input
-
-1. Without command-line arguments
-
+#### 将文件内容通过管道输入
+1.无命令行参数
 ```bash
 cat hexdump.c | ./hexdump
 ```
-
-Output:
-
+输出为
 ```bash
 00000000 2369 6e63 6c75 6465 203c 7374 6469 6f2e 
 00000010 683e 0a23 696e 636c 7564 6520 3c73 7464 
@@ -69,14 +56,11 @@ Output:
 00000c86
 ```
 
-2. With the `-C` option
-
+2.有 -C 参数
 ```bash
 cat hexdump.c | ./hexdump -C
 ```
-
-Output:
-
+输出为
 ```bash
 00000000 23 69 6e 63 6c 75 64 65  20 3c 73 74 64 69 6f 2e  |#include <stdio.|
 00000010 68 3e 0a 23 69 6e 63 6c  75 64 65 20 3c 73 74 64  |h>.#include <std|
